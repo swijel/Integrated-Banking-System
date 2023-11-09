@@ -1,0 +1,167 @@
+
+create sequence seq_accNo
+   start with 10000
+   increment by 1;
+
+create sequence seq_custId
+   start with 500
+   increment by 1;
+------------------------------------------------------------------------------------------------------------------------------
+create table city_bank_users(
+    userID varchar2(10) constraint userID_primary_key primary key,
+    password varchar2(16) constraint password_not_null not null,
+    role varchar2(10) constraint role_check not null check (role in ('ADMIN','CUSTOMER'))
+    );
+
+--------------------------------------------------------------------------------------------------------
+
+insert into city_bank_customer_master values(2,'name','paddress','caddress','1234567890','email@gmail.com','occup',sysdate,'pan12345','12345','12345','12345ekyc','cust1001');
+
+insert into city_bank_customer_master values(seq_custId.nextval,:name,:paddress,:caddress,:number,:email,:occup,:dob,:pan,:aadhaar,:ppno,:ekyc,:userId);
+
+
+USTOMER_ID CUSTOMER_N CUSTOMER_PERMANENT_ADDRESS     CUSTOMER_CURRENT_ADDRESS       CUSTOMER_M CUSTOMER_EMAIL       CUSTOMER_O CUSTOMER_ CUSTOMER_P CUSTOMER_AAD CUSTOMER_P CUSTOMER_EKYC_ USER_ID
+-
+
+
+create table city_bank_customer_master (
+	Customer_id number(10) constraint customer_id_primary_key primary key, 
+	customer_name varchar2(10) constraint customer_name_not_null not null,
+	customer_permanent_address varchar2(30) constraint customer_permanent_add_nn not null,
+	customer_current_address varchar2(30) constraint customer_c_add_nn not null,
+ 	customer_mobile varchar2(10) constraint customer_mobile_nn not null,
+	customer_email varchar2(20) constraint customer_email_nn not null,
+	customer_occupation varchar2(10) constraint customer_occupation_nn not null,
+	customer_DOB date constraint customer_DOB_nn not null,
+	customer_PAN_number varchar2(10) constraint customer_PAN_nn not null,
+	customer_aadhaar_number varchar2(10) constraint customer_aadhaar_nn not null,
+	customer_passport_number varchar2(10),
+	customer_ekyc_number varchar2(10) constraint customer_ekyc_no_nn not null,
+	userID varchar2(10), 
+	constraint user_id_foreign_key foreign key (userID) references city_bank_users(userID)
+);
+
+-----------------------------------------------------------------------------------------------------
+
+insert into city_bank_account_master values(12345, 'accName',sysdate,'SAVING',50000,1);
+
+insert into City_bank_account_master values(seq_accNo.nextval, )
+
+
+
+
+create table city_bank_account_master(
+	account_no number(15) constraint account_no_primary_key primary key,
+	account_name varchar2(20) constraint account_name_nn not null,
+	opening_date date constraint opening_date_not_null not null,
+	account_type varchar2(10) not null check (account_type in ('CURRENT', 'SAVING')),
+	available_balance number(10) constraint available_balance_check check (available_balance > 0),
+	customer_id number(6), constraint customer_id_foreign_key foreign key (customer_id) references city_bank_customer_master(customer_id)
+);
+
+create table city_account_transactions(
+	tr_id number(7) constraint tr_id_primary_key primary key,
+	tr_date date,
+	tr_amount number(8,2) constraint tr_amount_check check (tr_amount > 0),
+	tr_type varchar2(10) constraint tr_type_check check (tr_type in ('Deposit', 'Withdraw')),
+	account_no number(15),
+	constraint acc_no_f_key foreign key (account_no) references city_bank_account_master(account_no),
+	avl_balance number(10) constraint avl_balance_check check (avl_balance > 0)
+);
+
+
+========================================================================================================================
+
+insert into HDCC_bank_customer_master values(1,'two','three','four','12345ekyc');
+
+create table HDCC_bank_customer_master (
+	cust_id number(10) constraint h_cust_id_primary_key primary key,
+	cust_name varchar2(10) not null,
+	cust_PAN_number varchar2(10) not null,
+	cust_aadhaar_number varchar2(10) not null,
+	cust_ekyc_number varchar2(10) not null
+);
+
+
+
+insert into hdcc_bank_account_master values(12345,'name',sysdate,'SAVING', 50000.20, 1);
+
+create table hdcc_bank_account_master(
+	acc_no number(15) constraint h_acc_no_primary_key primary key,
+	acc_name varchar2(20) not null,
+	op_date date not null,
+	acc_type varchar2(10) not null check (acc_type in ('CURRENT', 'SAVING')),
+	acc_balance number(10) constraint h_acc_balance_check check (acc_balance > 0),
+	cust_id number(6), constraint h_cust_id_fk foreign key (cust_id) references hdcc_bank_customer_master(cust_id)
+);
+
+
+========================================================================================================================================================
+
+
+create table infinity_bank_customer_master (
+	cust_id number(10) constraint In_cust_id_pk primary key,
+	cust_name varchar2(10) constraint In_cust_name_nn not null,
+	cust_PAN_number varchar2(10) constraint In_PAN_nn not null,
+	cust_aadhaar_number varchar2(10) constraint In_aadhaar_nn not null,
+	cust_ekyc_number varchar2(10) constraint In_ekyc_no_nn not null
+);
+
+
+create table infinity_bank_account_master(
+	acc_no number(15) constraint In_acc_no_primary_key primary key,
+	acc_name varchar2(20) constraint In_acc_name_not_null not null,
+	op_date date constraint In_op_date_not_null not null,
+	acc_type varchar2(10) not null check (acc_type in ('CURRENT', 'SAVING')),
+	acc_balance number(10) constraint In_acc_bal_check check (acc_balance > 0),
+	cust_id number(6), constraint In_cust_id_fk foreign key (cust_id) references infinity_bank_customer_master(cust_id)
+);
+
+
+
+========================================================================================================================================================
+
+
+select model_name, count(*) "no of cars" from car_models natural join
+ car_sales where to_char(sold_on, 'fmMonth') in ('July','August','September') group by model_name;
+
+
+
+select acc_balance from hdcc_bank_account_master a inner join hdcc_bank_customer_master c on CUST_EKYC_NUMBER = '12346';
+
+
+select sum(acc_balance) from hdcc_bank_account_master a natural join 
+hdcc_bank_customer_master c where CUST_EKYC_NUMBER ='five';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

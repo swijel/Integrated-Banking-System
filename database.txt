@@ -1,0 +1,200 @@
+
+SQL>
+SQL> desc city_bank_customer_master;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ CUSTOMER_ID                                                                                                       NOT NULL NUMBER(10)
+ CUSTOMER_NAME                                                                                                     NOT NULL VARCHAR2(30)
+ CUSTOMER_PERMANENT_ADDRESS                                                                                        NOT NULL VARCHAR2(30)
+ CUSTOMER_CURRENT_ADDRESS                                                                                          NOT NULL VARCHAR2(30)
+ CUSTOMER_MOBILE                                                                                                   NOT NULL VARCHAR2(10)
+ CUSTOMER_EMAIL                                                                                                    NOT NULL VARCHAR2(30)
+ CUSTOMER_OCCUPATION                                                                                               NOT NULL VARCHAR2(10)
+ CUSTOMER_DOB                                                                                                      NOT NULL DATE
+ CUSTOMER_PAN_NUMBER                                                                                               NOT NULL VARCHAR2(10)
+ CUSTOMER_AADHAAR_NUMBER                                                                                           NOT NULL VARCHAR2(12)
+ CUSTOMER_PASSPORT_NUMBER                                                                                                   VARCHAR2(10)
+ CUSTOMER_EKYC_NUMBER                                                                                              NOT NULL VARCHAR2(14)
+ USER_ID                                                                                                                    VARCHAR2(30)
+ CUSTOMER_PHOTO                                                                                                             VARCHAR2(62)
+
+SQL> desc city_bank_account_master;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ ACCOUNT_NO                                                                                                        NOT NULL NUMBER(15)
+ ACCOUNT_NAME                                                                                                      NOT NULL VARCHAR2(20)
+ OPENING_DATE                                                                                                      NOT NULL DATE
+ ACCOUNT_TYPE                                                                                                      NOT NULL VARCHAR2(10)
+ AVAILABLE_BALANCE                                                                                                          NUMBER(10)
+ CUSTOMER_ID                                                                                                                NUMBER(6)
+
+SQL> desc hdcc_bank_account_master;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ ACC_NO                                                                                                            NOT NULL NUMBER(15)
+ ACC_NAME                                                                                                          NOT NULL VARCHAR2(20)
+ OP_DATE                                                                                                           NOT NULL DATE
+ ACC_TYPE                                                                                                          NOT NULL VARCHAR2(10)
+ ACC_BALANCE                                                                                                                NUMBER(10)
+ CUST_ID                                                                                                                    NUMBER(6)
+
+SQL> desc hdcc_bank_customer_master;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ CUST_ID                                                                                                           NOT NULL NUMBER(10)
+ CUST_NAME                                                                                                         NOT NULL VARCHAR2(10)
+ CUST_PAN_NUMBER                                                                                                   NOT NULL VARCHAR2(10)
+ CUST_AADHAAR_NUMBER                                                                                               NOT NULL VARCHAR2(13)
+ CUST_EKYC_NUMBER                                                                                                  NOT NULL VARCHAR2(10)
+
+SQL>
+
+SQL> desc infinity_bank_account_master;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ ACC_NO                                                                                                            NOT NULL NUMBER(15)
+ ACC_NAME                                                                                                          NOT NULL VARCHAR2(20)
+ OP_DATE                                                                                                           NOT NULL DATE
+ ACC_TYPE                                                                                                          NOT NULL VARCHAR2(10)
+ ACC_BALANCE                                                                                                                NUMBER(10)
+ CUST_ID                                                                                                                    NUMBER(6)
+
+SQL> desc infinity_bank_customer_master;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ CUST_ID                                                                                                           NOT NULL NUMBER(10)
+ CUST_NAME                                                                                                         NOT NULL VARCHAR2(10)
+ CUST_PAN_NUMBER                                                                                                   NOT NULL VARCHAR2(10)
+ CUST_AADHAAR_NUMBER                                                                                               NOT NULL VARCHAR2(13)
+ CUST_EKYC_NUMBER
+
+
+SQL> desc city_bank_users;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ USERID                                                                                                            NOT NULL VARCHAR2(30)
+ PASSWORD                                                                                                          NOT NULL VARCHAR2(30)
+
+SQL>
+
+
+
+
+
+
+SQL> select * from city_bank_customer_master;
+
+CUSTOMER_ID CUSTOMER_NAME                  CUSTOMER_PERMANENT_ADDRESS     CUSTOMER_CURRENT_ADDRESS       CUSTOMER_M CUSTOMER_EMAIL                 CUSTOMER_O CUSTOMER_ CUSTOMER_P CUSTOMER_AAD
+----------- ------------------------------ ------------------------------ ------------------------------ ---------- ------------------------------ ---------- --------- ---------- ------------
+CUSTOMER_P CUSTOMER_EKYC_ USER_ID                        CUSTOMER_PHOTO
+---------- -------------- ------------------------------ --------------------------------------------------------------
+        520 Swijel Dmello                  Virar                          Virar                          1234567890 swijel@gmail.com               devloper   19-JAN-01 pan12345   12345678901
+12345      012345         swijel@gmail.com               user-photos/swijel@gmail.com
+
+        521 Ninad Shetty                   Mumbai                         Mumbai                         1234567891 ninad@gmail.com                Designer   09-JUN-04 pan12346   12345678902
+123457     12346          12346                          user-photos/12346
+
+        522 Gaurav Shetty                  Delhi                          Delhi                          1234567892 gaurav@gmail.com               devloper   18-AUG-22 pan12347   12345678903
+123458     12347          12347                          user-photos/12347
+
+
+CUSTOMER_ID CUSTOMER_NAME                  CUSTOMER_PERMANENT_ADDRESS     CUSTOMER_CURRENT_ADDRESS       CUSTOMER_M CUSTOMER_EMAIL                 CUSTOMER_O CUSTOMER_ CUSTOMER_P CUSTOMER_AAD
+----------- ------------------------------ ------------------------------ ------------------------------ ---------- ------------------------------ ---------- --------- ---------- ------------
+CUSTOMER_P CUSTOMER_EKYC_ USER_ID                        CUSTOMER_PHOTO
+---------- -------------- ------------------------------ --------------------------------------------------------------
+        523 Shivam Gupta                   Banglore                       Banglore                       1234567894 shivam@gmail.com               Designer   13-OCT-21 pan12348   12345678904
+123459     12348          12348                          user-photos/12348
+
+
+SQL> select * from city_bank_account_master;
+
+ACCOUNT_NO ACCOUNT_NAME         OPENING_D ACCOUNT_TY AVAILABLE_BALANCE CUSTOMER_ID
+---------- -------------------- --------- ---------- ----------------- -----------
+     10020 Swijel Dmello        09-AUG-22 SAVING                  5000         520
+     10021 Ninad Shetty         09-AUG-22 SAVING                  5000         521
+     10022 Gaurav Shetty        09-AUG-22 SAVING                  5000         522
+     10023 Shivam Gupta         09-AUG-22 SAVING                  5000         523
+
+SQL> select * from infinity_bank_customer_master;
+
+   CUST_ID CUST_NAME  CUST_PAN_N CUST_AADHAAR_ CUST_EKYC_
+---------- ---------- ---------- ------------- ----------
+         2 Gaurav     pan12347   12345678903   12347
+         1 Ninad      pan12346   12345678902   12346
+
+SQL> select * from infinity_bank_account_master;
+
+    ACC_NO ACC_NAME             OP_DATE   ACC_TYPE   ACC_BALANCE    CUST_ID
+---------- -------------------- --------- ---------- ----------- ----------
+       101 Ninad                09-AUG-22 SAVING            3000          1
+       102 Gaurav               09-AUG-22 SAVING            6000          2
+
+SQL> select * from hdcc_bank_customer_master;
+
+   CUST_ID CUST_NAME  CUST_PAN_N CUST_AADHAAR_ CUST_EKYC_
+---------- ---------- ---------- ------------- ----------
+         1 Ninad      pan12346   12345678902   12346
+
+SQL> select * from hdcc_bank_account_master;
+
+    ACC_NO ACC_NAME             OP_DATE   ACC_TYPE   ACC_BALANCE    CUST_ID
+---------- -------------------- --------- ---------- ----------- ----------
+       101 Ninad                09-AUG-22 SAVING           70000          1
+       103 Ninad                09-AUG-22 SAVING           80050          1
+
+SQL>
+SQL>
+SQL>
+SQL>SQL> select * from city_bank_users;
+
+USERID                         PASSWORD
+------------------------------ ------------------------------
+swijel@gmail.com               Swijel
+12346                          Ninad
+12347                          Gaurav
+12348                          Shivam
+
+SQL>
+
+{"customerId":1,"customerName":"name","customerPermanentAddress":"paddress","customerCurrentAddress":"caddress","customerMobile":"1234567890","customerEmail":"email@gmail.com","customerOccupation":"occup","customerDob":"2022-08-04","customerPanNumber":"pan12345","customerAadhaarNumber":"12345","customerPassportNumber":"12345","customerEkycNumber":"12345ekyc","userId":"cust1001"}
+
+
+
+
+============================================================================================================================================
+Imp links
+
+http://localhost:8010/swagger-ui.html
+
+swagger link
+
+
+https://drive.google.com/drive/folders/1neyVDvgAPCV5so3ctGJEHFJdT0Tpyfv6
+
+
+Gurus drive link
+
+
+
+https://docs.google.com/presentation/d/1X3bArpR8K5t66g8GsjujR_6pTwJn3eGoKUZ38GaofSo/edit?usp=sharing
+ppt link ^
+
+
+https://docs.google.com/spreadsheets/d/1uh3ZG68kJAOI2ug_Df7N-dTaq7mLZXXETSXEHzULDv8/edit?usp=sharing
+sheet ^
+
+
+https://docs.google.com/document/d/1KNPDYuAqYKHZhCgDNy-JNRzfybIvKEn6aytEc0fIbcI/edit
+doc^
+
+
+
+
+
+
+
+
+
+
+
+
